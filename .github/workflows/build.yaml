@@ -1,0 +1,16 @@
+name: "colmena build"
+on:
+  push:
+  schedule:
+  - cron: "36 13 * * 6"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v20
+    - run: |
+        result=$(nix develop --command colmena eval --instantiate -E '{ nodes, ... }: nodes.desktop2k.config.system.build.toplevel')
+        echo "Built: $result"
+        nix develop --command nix path-info -Sh "$result"

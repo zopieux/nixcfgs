@@ -1,0 +1,10 @@
+keys:
+  - &admin_zopieux age1kvlx3yuhnvheyqhskm7svxj7dtxrlhn5zykw0mds7zxzyrg46v8qsl0zg6
+  - &machine_desktop2k age1s5su283lxe3kadl7y3nxepwejq6gvyr4t2v08fmxr7mg56au55gqdtpxuh
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+        - *admin_zopieux
+        - *machine_desktop2k
