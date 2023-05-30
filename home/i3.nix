@@ -71,6 +71,11 @@ in {
             always = true;
             notification = false;
           }
+          {
+            command = "autorandr --change";
+            always = false;
+            notification = false;
+          }
         ];
         window.commands = [{
           criteria.class = "(?i)File Operation Progress";
