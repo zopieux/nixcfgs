@@ -88,5 +88,8 @@ in {
 
     # Thumbnails.
     services.tumbler.enable = true;
+
+    # i2c, e.g. for DDC monitor control.
+    hardware.i2c.enable = true;
   };
 }
