@@ -16,16 +16,27 @@ in {
   xdg.desktopEntries = {
     chrome-glowing-bear =
       webApp "Glowing Bear" "IRC client" "https://irc.home.zopi.eu/" {
-        url =
-          "https://raw.githubusercontent.com/glowing-bear/glowing-bear/b0675b1ad395023eeba9135d0c1d85102157c90e/src/assets/img/glowing_bear_128x128.png";
+        url = "https://irc.home.zopi.eu/assets/img/glowing_bear_128x128.png";
         hash = "sha256-KAH6zKSQQl3Ga1TKU1GaJMlPebPPcOLIYt1srp/Hq5Y=";
       };
 
     chrome-element =
       webApp "Element" "Matrix client" "https://app.element.io/" {
         url =
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Element_%28software%29_logo.svg/54px-Element_%28software%29_logo.svg.png";
-        hash = "sha256-MUA7cMTh6x5hUrsF2TvDpTSsofAwKFc17cINk1voYAI=";
+          "https://raw.githubusercontent.com/vector-im/element-web/develop/res/vector-icons/120.png";
+        hash = "sha256-AokJDNmzLnmGRoCRIbHiODK0iCtdyezWr2YBsXhTvC4=";
+      };
+
+    chrome-spotify =
+      webApp "Spotify" "Online music player" "https://open.spotify.com/" {
+        url = "https://open.spotifycdn.com/cdn/images/favicon.0f31d2ea.ico";
+        hash = "sha256-DzHS6swU2eT/BGIhDRVUfL5nk10ycTuGBWKfD2z183g=";
+      };
+
+    chrome-youtube-music = webApp "Youtube Music" "Online music player"
+      "https://music.youtube.com/" {
+        url = "https://music.youtube.com/img/favicon_144.png";
+        hash = "sha256-xuHQU1LBXb8ATf7uZ+Jz/xnASyzWlMkBfJgn6NjZz1Y=";
       };
 
     chrome-alt = {
