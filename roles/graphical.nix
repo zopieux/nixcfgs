@@ -54,7 +54,6 @@ in {
 
     services.xserver.enable = true;
     services.xserver.displayManager.lightdm.enable = true;
-    # services.xserver.displayManager.lightdm.autoLogin.timeout = 2;
     services.xserver.displayManager.autoLogin.user = "alex";
     services.xserver.windowManager.i3.enable = true;
 
@@ -87,6 +86,7 @@ in {
       package = lib.mkForce pkgs.gnome3.gvfs;
     };
 
+    # Thumbnails.
     services.tumbler.enable = true;
   };
 }
