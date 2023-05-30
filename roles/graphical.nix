@@ -28,6 +28,7 @@ in {
       gimp-with-plugins
       streamlink
       yt-dlp
+      lxqt.lxqt-policykit
     ];
 
     fonts.fonts = with pkgs; [
@@ -80,6 +81,11 @@ in {
     programs.nm-applet.enable = true;
 
     # GVFS to mount MTP devices
-    services.gvfs.enable = true;
+    services.gvfs = {
+      enable = true;
+      package = lib.mkForce pkgs.gnome3.gvfs;
+    };
+
+    services.tumbler.enable = true;
   };
 }
