@@ -45,6 +45,9 @@ in {
 
     xsession.windowManager.i3 = {
       enable = true;
+      extraConfig = ''
+        for_window [all] title_window_icon padding 5px
+      '';
       config = let
         pactl = "${pkgs.pulseaudio}/bin/pactl";
         rofi = "${pkgs.rofi}/bin/rofi";
@@ -56,6 +59,7 @@ in {
         focus.mouseWarping = false;
         focus.wrapping = "no";
         terminal = "konsole";
+        defaultWorkspace = "workspace number 1";
         fonts = {
           names = [ "monospace" ];
           size = 10.0;
@@ -80,7 +84,12 @@ in {
         window.commands = [{
           criteria.class = "(?i)File Operation Progress";
           command = "floating enable";
-        }];
+        }
+        # {
+        #   criteria = "[all]";
+        #   command = "title_window_icon padding 2px";
+        # }
+          ];
         keybindings = lib.mkOptionDefault {
           "${mod}+d" = ''
             exec --no-startup-id "${rofi} -modi drun -show drun -show-icons -drun-match-fields name,generic,exec,keywords -drun-display-format \\"{name} <tt>{exec}</tt>\\""
@@ -118,6 +127,7 @@ in {
           "${mod}+q" = "focus parent";
           "${mod}+s" = "focus child";
           "${mod}+w" = "kill";
+          "${mod}+b" = "border toggle";
           "${mod}+Shift+space" = "floating toggle";
           "${mod}+space" = "focus mode_toggle";
           "${mod}+Shift+c" = "reload";
