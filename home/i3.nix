@@ -84,12 +84,7 @@ in {
         window.commands = [{
           criteria.class = "(?i)File Operation Progress";
           command = "floating enable";
-        }
-        # {
-        #   criteria = "[all]";
-        #   command = "title_window_icon padding 2px";
-        # }
-          ];
+        }];
         keybindings = lib.mkOptionDefault {
           "${mod}+d" = ''
             exec --no-startup-id "${rofi} -modi drun -show drun -show-icons -drun-match-fields name,generic,exec,keywords -drun-display-format \\"{name} <tt>{exec}</tt>\\""
@@ -161,8 +156,8 @@ in {
     services.polybar = {
       enable = true;
       script = ''
-        polybar left &
-        polybar right &
+        I2CBUS=7 polybar left & disown
+        I2CBUS=4 polybar right & disown
       '';
       package = pkgs.polybar.override {
         i3Support = true;
@@ -201,13 +196,14 @@ in {
           module-margin = 1;
           modules-left = "i3";
           modules-center = "now-playing date";
-          modules-right = "net-lan temp cpu memory fs pulseaudio";
+          modules-right = "net-lan temp cpu memory fs brightness pulseaudio";
         };
 
         "bar/left" = {
           monitor = "DP-4";
           "inherit" = "bar/common";
         };
+
         "bar/right" = {
           "inherit" = "bar/common";
           monitor = "HDMI-0";
@@ -292,6 +288,7 @@ in {
           mount-0 = "/";
           interval = 5;
           fixed-values = true;
+          label-mounted = " %percentage_free%%";
         };
 
         "module/date" = {
@@ -319,6 +316,7 @@ in {
             "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input";
           interval = 2;
           warn-temperature = 70;
+          format = " <label>";
           label-warn-foreground = "\${colors.warning}";
         };
 
@@ -327,6 +325,15 @@ in {
           tail = true;
           exec =
             "${pkgs.player-mpris-tail}/bin/player-mpris-tail.py --icon-playing '󰎈' --icon-paused '󰎊' --icon-stopped '' -w chromium -w Spot -f '{icon} {artist} ⋅ {title}'";
+        };
+
+        "module/brightness" = {
+          type = "custom/script";
+          tail = true;
+          label = " %output%%";
+          scroll-down = "kill -USR1 %pid%";
+          scroll-up = "kill -USR2 %pid%";
+          exec = "${pkgs.brightness-ddc}";
         };
       };
     };
