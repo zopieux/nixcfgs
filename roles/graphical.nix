@@ -44,6 +44,7 @@ in {
 
     fonts.fontconfig = {
       enable = true;
+      hinting.enable = false;
       defaultFonts = {
         monospace = [ "Iosevka Fixed" "Noto Sans Mono" "Noto Sans Symbols" ];
         sansSerif = [ "Noto Sans" "Noto Sans CJK SC" "Noto Sans Symbols" ];
