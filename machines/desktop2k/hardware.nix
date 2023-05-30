@@ -30,6 +30,8 @@ rec {
     fsType = "vfat";
   };
 
+  boot.tmp.useTmpfs = true;
+
   swapDevices = [ ];
 
   networking.useDHCP = lib.mkDefault true;
