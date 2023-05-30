@@ -14,6 +14,7 @@
     dig
     reptyr
     git
+    git-lfs
     wget
     curl
     htop
