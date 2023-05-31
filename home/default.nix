@@ -18,6 +18,9 @@
     nix-direnv.enable = true;
   };
 
+  # Hint that we prefer a dark theme.
+  gtk.theme.name = "Adwaita Dark";
+
   imports = [
     ./git.nix
     ./graphical.nix
