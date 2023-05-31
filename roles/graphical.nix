@@ -8,27 +8,31 @@ in {
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      i3
-      konsole
-      pavucontrol
-      xorg.xkill
-      xorg.xev
-      gnome.adwaita-icon-theme
-      vscode
-      nixfmt
-      google-chrome
-      firefox
-      mpv
-      vlc
-      feh
-      evince
-      imgurbash2
       audacity
-      reaper
+      evince
+      feh
+      firefox
       gimp-with-plugins
-      streamlink
-      yt-dlp
+      gnome.adwaita-icon-theme
+      google-chrome
+      i3
+      imgurbash2
+      konsole
+      libreoffice
       lxqt.lxqt-policykit
+      mpv
+      nixfmt
+      pavucontrol
+      reaper
+      streamlink
+      sxiv
+      thunderbird
+      upscayl
+      vlc
+      vscode
+      xorg.xev
+      xorg.xkill
+      yt-dlp
     ];
 
     fonts.fonts = with pkgs; [
