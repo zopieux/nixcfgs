@@ -3,6 +3,14 @@
 {
   networking.hostName = name;
 
+  networking.extraHosts = ''
+    192.168.1.1   router
+    192.168.1.10  nas
+    192.168.1.20  desktop
+    192.168.1.30  desktop2k
+    192.168.1.40  tv
+  '';
+
   environment.systemPackages = with pkgs; [
     pciutils
     usbutils
