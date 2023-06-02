@@ -8,6 +8,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      anydesk
       audacity
       evince
       feh
