@@ -82,6 +82,16 @@ in {
         focus.wrapping = "no";
         terminal = "konsole";
         defaultWorkspace = "workspace number 1";
+        workspaceOutputAssign = [
+          {
+            output = "primary";
+            workspace = "1";
+          }
+          {
+            output = "secondary";
+            workspace = "4";
+          }
+        ];
         fonts = {
           names = [ "monospace" ];
           size = 10.0;
