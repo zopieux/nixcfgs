@@ -18,6 +18,7 @@ in {
     # startup tasks.
     systemd.user.targets.i3-session.Unit = {
       BindsTo = [ "graphical-session.target" ];
+      After = [ "autorandr.service" ];
       Wants = [ "polybar.service" "variety.service" "misc-x.service" ];
     };
 
