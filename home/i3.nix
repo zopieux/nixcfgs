@@ -11,11 +11,33 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    # Ensure monitors are laid out correctly.
+    services.autorandr.enable = true;
+
+    # A target to start once i3 is initialized. More reliable than i3's built-in
+    # startup tasks.
+    systemd.user.targets.i3-session.Unit = {
+      BindsTo = [ "graphical-session.target" ];
+      Wants = [ "polybar.service" "variety.service" "misc-x.service" ];
+    };
+
+    # Wallpapers.
     systemd.user.services.variety = {
       Unit.PartOf = [ "graphical-session.target" ];
       Service.ExecStart = "${pkgs.variety}/bin/variety";
-      Install.WantedBy = [ "graphical-session.target" ];
     };
+
+    # Screen power management.
+    systemd.user.services.misc-x = {
+      Unit.PartOf = [ "graphical-session.target" ];
+      Service.ExecStart = [
+        "${pkgs.xorg.xset}/bin/xset s 200 10"
+        "${pkgs.xorg.xset}/bin/xset dpms 300 300 300"
+      ];
+      Service.Type = "oneshot";
+      Service.RemainAfterExit = false;
+    };
+
     home.file.".config/variety/variety.conf" = {
       text = ''
         quotes_enabled = False
@@ -64,23 +86,12 @@ in {
           names = [ "monospace" ];
           size = 10.0;
         };
-        startup = [
-          {
-            command = "systemctl --user restart polybar";
-            always = true;
-            notification = false;
-          }
-          {
-            command = "systemctl --user restart variety";
-            always = true;
-            notification = false;
-          }
-          {
-            command = "autorandr --change";
-            always = false;
-            notification = false;
-          }
-        ];
+        # Start utilities once i3 is initialized.
+        startup = [{
+          command = "systemctl --user start --no-block i3-session.target";
+          always = true;
+          notification = false;
+        }];
         window.commands = [{
           criteria.class = "(?i)File Operation Progress";
           command = "floating enable";
