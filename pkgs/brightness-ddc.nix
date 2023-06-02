@@ -1,5 +1,6 @@
 { pkgs, coreutils, ddcutil }:
 pkgs.writeShellScript "brightness-ddc" ''
+  set -euo pipefail
   [[ -z "$I2CBUS" ]] && exit 1
   handle() {
     local raw=$(${ddcutil}/bin/ddcutil --terse --bus "$I2CBUS" getvcp 10)
