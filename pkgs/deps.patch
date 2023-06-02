@@ -1,0 +1,42 @@
+diff --git a/rofi-screenshot b/rofi-screenshot
+index 7b822a4..b0411f2 100755
+--- a/rofi-screenshot
++++ b/rofi-screenshot
+@@ -116,13 +116,6 @@ get_options() {
+   echo "  Stop recording"
+ }
+ 
+-check_deps() {
+-  if ! hash "$1" 2> /dev/null; then
+-    echo "Error: This script requires $1"
+-    exit 1
+-  fi
+-}
+-
+ show_help() {
+   echo ### rofi-screenshot
+   echo "USAGE: rofi-screenshot [OPTION] <argument>"
+@@ -147,13 +140,6 @@ check_directory() {
+ }
+ 
+ main() {
+-  # check dependencies
+-  check_deps slop
+-  check_deps ffcast
+-  check_deps ffmpeg
+-  check_deps xclip
+-  check_deps rofi
+-
+   # rebind long args as short ones
+   for arg in "$@"; do
+     shift
+@@ -243,6 +229,3 @@ main() {
+ main "$@" &
+ 
+ exit 0
+-
+-! /bin/bash
+-
+-- 
+2.40.1
+

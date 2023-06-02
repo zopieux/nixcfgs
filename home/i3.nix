@@ -75,6 +75,7 @@ in {
         pactl = "${pkgs.pulseaudio}/bin/pactl";
         rofi = "${pkgs.rofi}/bin/rofi";
         playerctl = "${pkgs.playerctl}/bin/playerctl";
+        rofi-screenshot = "${pkgs.rofi-screenshot}/bin/rofi-screenshot";
       in {
         modifier = mod;
         floating.modifier = mod;
@@ -118,6 +119,9 @@ in {
           "${mod}+semicolon" =
             "exec --no-startup-id ${pkgs.rofimoji}/bin/rofimoji";
           "${mod}+e" = "exec ${pkgs.xfce.thunar}/bin/thunar";
+          "Print" =
+            "exec --no-startup-id env ROFI_SCREENSHOT_DIR=/home/alex/screenshots ${rofi-screenshot}";
+          "Shift+Print" = "exec --no-startup-id ${rofi-screenshot} --stop";
 
           # Moves
           "${mod}+Left" = "focus left";

@@ -1,0 +1,16 @@
+diff --git a/rofi-screenshot b/rofi-screenshot
+index b9f3707..7b822a4 100755
+--- a/rofi-screenshot
++++ b/rofi-screenshot
+@@ -8,7 +8,7 @@
+ ##    stop recording with rofi-screenshot -s
+ 
+ # Screenshot directory
+-screenshot_directory="$HOME/Pictures/Screenshots"
++screenshot_directory="${ROFI_SCREENSHOT_DIR:-${XDG_PICTURES_DIR:-$HOME/Pictures}/Screenshots}"
+
+ # Default date format
+ default_date_format="+%d-%m-%Y %H:%M:%S"
+-- 
+2.40.1
+
