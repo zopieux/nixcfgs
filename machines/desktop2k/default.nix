@@ -11,7 +11,7 @@ in {
   my.roles.nvidia.enable = true;
   my.roles.nvidia.enableCuda = true;
 
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [ beeper ];
 
   networking.networkmanager.enable = true;
 
