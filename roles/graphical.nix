@@ -10,13 +10,16 @@ in {
     environment.systemPackages = with pkgs; [
       anydesk
       audacity
+      blender
       evince
       feh
       firefox
       gimp-with-plugins
+      gist
       gnome.adwaita-icon-theme
       google-chrome
       i3
+      ib-tws
       imgurbash2
       konsole
       libreoffice
