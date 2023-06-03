@@ -12,30 +12,31 @@
   '';
 
   environment.systemPackages = with pkgs; [
-    pciutils
-    usbutils
     binutils
-    file
-    tree
-    python3
-    moreutils
+    colmena
+    curl
     dig
-    reptyr
+    ffmpeg
+    file
+    gdb
     git
     git-lfs
-    wget
-    curl
-    htop
-    mosh
-    unzip
-    unrar
-    p7zip
-    ffmpeg
     gnumake
+    htop
     jq
-    colmena
+    moreutils
+    mosh
+    p7zip
+    pciutils
+    python3
+    reptyr
+    ripgrep
+    tree
+    unrar
+    unzip
+    usbutils
     vim_configurable
-    gdb
+    wget
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
