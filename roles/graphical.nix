@@ -21,6 +21,7 @@ in {
       i3
       ib-tws
       imgurbash2
+      keepassxc
       konsole
       libreoffice
       lxqt.lxqt-policykit
