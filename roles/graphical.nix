@@ -14,11 +14,13 @@ in {
       evince
       feh
       firefox
+      fq
       gimp-with-plugins
       gist
       gnome.adwaita-icon-theme
       google-chrome
       i3
+      imagemagick
       imgurbash2
       keepassxc
       konsole
@@ -34,6 +36,7 @@ in {
       upscayl
       vlc
       vscode
+      wireshark
       xorg.xev
       xorg.xkill
       yt-dlp
@@ -73,6 +76,9 @@ in {
 
     # dconf for programs that use GSettings.
     programs.dconf.enable = true;
+
+    programs.wireshark.enable = true;
+    users.users."alex".extraGroups = [ "wireshark" ];
 
     # Enable sound.
     sound.enable = true;
