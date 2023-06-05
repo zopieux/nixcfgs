@@ -20,7 +20,6 @@
     file
     gdb
     git
-    git-lfs
     gnumake
     htop
     jq

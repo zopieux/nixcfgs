@@ -10,6 +10,8 @@
       graph = "log --all --graph --decorate --abbrev-commit --pretty=oneline";
     };
 
+    lfs.enable = true;
+
     extraConfig = {
       pull.rebase = true;
       push.followTags = true;
