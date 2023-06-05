@@ -1,1 +1,1 @@
-{ imports = [ ./gaming.nix ./graphical.nix ./nvidia.nix ]; }
+{ imports = [ ./gaming.nix ./graphical.nix ./nvidia.nix ./ipfs.nix ]; }

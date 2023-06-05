@@ -7,6 +7,7 @@ in {
   deployment.targetHost = "192.168.1.30";
 
   my.roles.gaming.enable = true;
+  my.roles.ipfs.enable = true;
   my.roles.graphical.enable = true;
   my.roles.nvidia.enable = true;
   my.roles.nvidia.enableCuda = true;
