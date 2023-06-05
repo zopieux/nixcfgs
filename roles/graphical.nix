@@ -19,7 +19,6 @@ in {
       gnome.adwaita-icon-theme
       google-chrome
       i3
-      ib-tws
       imgurbash2
       keepassxc
       konsole

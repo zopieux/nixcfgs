@@ -13,13 +13,19 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur = { url = "github:nix-community/NUR"; };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
     # Colmena hive output.
     colmena = let machines = import ./machines;
     in {
-      meta = { nixpkgs = import nixpkgs { system = "x86_64-linux"; }; };
+      meta = {
+        nixpkgs = import nixpkgs {
+          system = "x86_64-linux";
+          overlays = [ inputs.nur.overlay ];
+        };
+      };
       defaults = { pkgs, ... }: {
         imports = [
           inputs.home-manager.nixosModules.home-manager
