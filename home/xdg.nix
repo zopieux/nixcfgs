@@ -56,7 +56,7 @@ in {
     streamlink = {
       name = "streamlink";
       exec = "${pkgs.writeShellScript "streamlink" ''
-        ${pkgs.streamlink}/bin/streamlink -p mpv $(${pkgs.rofi}/bin/rofi -dmenu -p "Link: ") best
+        ${pkgs.streamlink}/bin/streamlink -p mpv $(${pkgs.rofi}/bin/rofi -dmenu -p "Link: " -filter "twitch.tv/") best
       ''}";
     };
   };
