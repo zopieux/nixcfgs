@@ -25,7 +25,6 @@ in {
       keepassxc
       konsole
       libreoffice
-      lxqt.lxqt-policykit
       mpv
       nixfmt
       pavucontrol
@@ -102,6 +101,19 @@ in {
 
     # Thumbnails.
     services.tumbler.enable = true;
+    security.polkit.enable = true;
+    systemd.user.services.polkit-authentication-agent = {
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        ExecStart =
+          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
 
     # i2c, e.g. for DDC monitor control.
     hardware.i2c.enable = true;
