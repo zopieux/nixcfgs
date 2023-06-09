@@ -25,6 +25,7 @@
     jq
     moreutils
     mosh
+    ncdu
     p7zip
     pciutils
     python3
