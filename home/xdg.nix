@@ -39,6 +39,13 @@ in {
         hash = "sha256-xuHQU1LBXb8ATf7uZ+Jz/xnASyzWlMkBfJgn6NjZz1Y=";
       };
 
+    chrome-syncthing = webApp "Syncthing" "File synchronization daemon"
+      "http://127.0.0.1:8384/" {
+        url =
+          "https://raw.githubusercontent.com/syncthing/syncthing/main/assets/logo-128.png";
+        hash = "sha256-X4e1oiCEWGdOLqxX4WsU2yPnX7sjU08OvEhzfDXAr1k=";
+      };
+
     chrome-alt = {
       name = "Alt";
       exec = ''${browser} --profile-directory="Profile 1"'';

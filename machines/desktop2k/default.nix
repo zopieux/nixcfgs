@@ -24,10 +24,7 @@ in {
   nixpkgs.config.cudaCapabilities = [ "5.0" "5.2" "5.3" ];
 
   home-manager.users."alex" = {
-    services.syncthing = {
-      enable = true;
-      tray.enable = true;
-    };
+    services.syncthing.enable = true;
 
     programs.autorandr = {
       enable = true;
