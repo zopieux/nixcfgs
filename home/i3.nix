@@ -222,7 +222,8 @@ in {
           module-margin = 1;
           modules-left = "i3";
           modules-center = "now-playing date";
-          modules-right = "net-lan temp cpu memory fs brightness pulseaudio";
+          modules-right =
+            "net-lan temp cpu memory fs nvidia brightness pulseaudio";
         };
 
         "bar/left" = {
@@ -360,6 +361,22 @@ in {
           scroll-down = "kill -USR1 %pid%";
           scroll-up = "kill -USR2 %pid%";
           exec = "${pkgs.brightness-ddc}";
+        };
+
+        "module/nvidia" = let
+          smi = "/run/current-system/sw/bin/nvidia-smi";
+          script = pkgs.writeShellScript "polybar-nvidia" ''
+            IFS=", " read -ra e <<<$(${smi} --query-gpu=temperature.gpu,power.draw,utilization.gpu,utilization.memory,fan.speed --format=csv,noheader,nounits)
+            declare -a ramp=(▁ ▂ ▃ ▄ ▅ ▆ ▇ █)
+            gpu=''${ramp[$(( 8 * (e[2]-1) / 100 ))]}
+            mem=''${ramp[$(( 8 * (e[3]-1) / 100 ))]}
+            fan=''${ramp[$(( 8 * (e[4]-1) / 100 ))]}
+            printf "󰍹 %%{F#aaff77}%s%%{F-} %2.0f°C %3.0fW %%{F#aaff77}%s%%{F-} 󰈐 %%{F#aaff77}%s%%{F-}" $gpu ''${e[0]} ''${e[1]} $mem $fan
+          '';
+        in {
+          type = "custom/script";
+          interval = 1;
+          exec = "${script}";
         };
       };
     };
