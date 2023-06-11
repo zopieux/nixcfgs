@@ -12,10 +12,7 @@ in {
   my.roles.nvidia.enable = true;
   my.roles.nvidia.enableCuda = true;
 
-  environment.systemPackages = with pkgs; [
-    beeper
-    nur.repos.k3a.ib-tws
-  ];
+  environment.systemPackages = with pkgs; [ nur.repos.k3a.ib-tws ];
 
   networking.networkmanager.enable = true;
 

@@ -5,7 +5,7 @@ appimageTools.wrapType2 rec {
 
   src = fetchurl {
     url = "https://download.beeper.com/linux/appImage/x64";
-    hash = "sha256-+g59ZQcZIWV3oE07QBINqaCIyQETabkBrlp4PZ9TrjU=";
+    hash = "sha256-458+ZdzhD4N3fpQjoP6yD2nXCuXJ5NHwW7Rkf0kd1mk=";
   };
 
   extraInstallCommands = let
