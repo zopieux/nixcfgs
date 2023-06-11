@@ -6,7 +6,8 @@ let
 in rec {
   users.users."${self}" = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "audio" "mlocate" "i2c" ];
+    extraGroups =
+      [ "wheel" "networkmanager" "audio" "mlocate" "i2c" "vboxusers" ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII5oGmMmhEp/FT77b8KdMSYl4xTcbm10btUP0QIA1/0U"

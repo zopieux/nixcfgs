@@ -69,6 +69,9 @@ in {
 
     hardware.opengl.enable = true;
 
+    virtualisation.virtualbox.host.enable = true;
+    virtualisation.virtualbox.host.enableExtensionPack = true;
+
     # Configure keymap in X11
     services.xserver.layout = "fr";
     services.xserver.xkbVariant = "oss";
