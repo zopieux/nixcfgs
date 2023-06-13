@@ -20,6 +20,7 @@
     file
     gdb
     git
+    glances
     gnumake
     htop
     jq
