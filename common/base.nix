@@ -12,6 +12,7 @@
   '';
 
   environment.systemPackages = with pkgs; [
+    aria2
     binutils
     colmena
     curl
