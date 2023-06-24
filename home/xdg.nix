@@ -50,7 +50,7 @@ in {
       name = "Alt";
       exec = ''${browser} --profile-directory="Profile 1"'';
       terminal = false;
-      categories = [ "Application" "WebBrowser" ];
+      categories = ["WebBrowser" ];
     };
 
     streamlink = {
@@ -58,6 +58,21 @@ in {
       exec = "${pkgs.writeShellScript "streamlink" ''
         ${pkgs.streamlink}/bin/streamlink -p mpv $(${pkgs.rofi}/bin/rofi -dmenu -p "Link: " -filter "twitch.tv/") best
       ''}";
+    };
+
+    stable-diffusion-webui ={
+      name = "Stable Diffusion Webui";
+      exec =  "${pkgs.writeShellScript "sdwui-launch" ''
+        ${pkgs.coreutils}/bin/nohup /home/alex/dev/ml/stable-diffusion-webui/run &>/tmp/sdwebui.log &
+        while ! ${pkgs.curl}/bin/curl -o /dev/null --silent -m 1 --connect-timeout 1 http://127.0.0.1:7860/ ; do sleep 1; done
+        ${pkgs.coreutils}/bin/nohup ${browser} --profile-directory="Profile 1" http://127.0.0.1:7860/ &>/dev/null &
+      ''}";
+      terminal = false;
+      categories = [ "WebBrowser" ];
+      icon = (pkgs.fetchurl {
+        url = "https://avatars.githubusercontent.com/u/51063788?s=200&v=4&name=.png";
+        hash = "sha256-B6KDmackWhj03irz1c+go0o6J/hCL1r0kXdwZle/dNE=";
+      }).outPath;
     };
   };
 }
