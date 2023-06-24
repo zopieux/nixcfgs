@@ -66,6 +66,9 @@ in {
       '';
     };
 
+    xsession.profileExtra = ''
+      eval $(${pkgs.gnome3.gnome-keyring}/bin/gnome-keyring-daemon --daemonize --components=secrets)
+    '';
     xsession.windowManager.i3 = {
       enable = true;
       extraConfig = ''
