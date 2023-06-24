@@ -20,12 +20,14 @@ in {
       gnome.adwaita-icon-theme
       google-chrome
       i3
+      nixpkgs-fmt
       imagemagick
       imgurbash2
       keepassxc
       konsole
       libreoffice
       mpv
+      nil # Nix server language
       nixfmt
       pavucontrol
       reaper

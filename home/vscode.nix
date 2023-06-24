@@ -13,6 +13,14 @@
         "editor.autoIndent" = "full";
         "files.trimTrailingWhitespace" = true;
         "editor.formatOnSaveMode" = "file";
+        "editor.defaultFormatter" = "jnoortheen.nix-ide";
+      };
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nil";
+      "nix.serverSettings" = {
+        "nil" = {
+          "formatting" = { "command" = [ "nixpkgs-fmt" ]; };
+        };
       };
       "editor.rulers" = [ 80 ];
       "workbench.tree.renderIndentGuides" = "always";
