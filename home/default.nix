@@ -6,7 +6,7 @@
   home.stateVersion = "22.11";
   programs.home-manager.enable = true;
 
-  programs.command-not-found.enable = true;
+  home.sessionVariables = { NIX_AUTO_RUN = "1"; };
 
   programs.bat = {
     enable = true;

@@ -1,4 +1,4 @@
-{ name, config, pkgs, ... }:
+{ name, lib, config, pkgs, ... }:
 
 {
   networking.hostName = name;
@@ -53,6 +53,19 @@
   programs.zsh.enable = true;
   programs.autojump.enable = true;
   environment.pathsToLink = [ "/share/zsh" ];
+
+  # Auto-run missing binaries.
+  environment.variables.NIX_AUTO_RUN = "1";
+  programs.command-not-found.enable = true;
+  programs.command-not-found.dbPath = let
+    channelTarball = pkgs.fetchurl {
+      url =
+        "https://releases.nixos.org/nixos/unstable/nixos-23.11pre494976.7c67f006ea0/nixexprs.tar.xz";
+      hash = "sha256-4QcIW34X2AwIIfZSrDnz7BcAlLH7FhHa38QTHWeY0qU=";
+    };
+  in pkgs.runCommand "programs.sqlite" { } ''
+    tar xf ${channelTarball} --wildcards "nixos*/programs.sqlite" -O > $out
+  '';
 
   # SUID wrappers
   programs.mtr.enable = true;
