@@ -20,15 +20,16 @@ in {
       gnome.adwaita-icon-theme
       google-chrome
       i3
-      nixpkgs-fmt
       imagemagick
       imgurbash2
       keepassxc
       konsole
+      krita
       libreoffice
       mpv
       nil # Nix server language
       nixfmt
+      nixpkgs-fmt
       pavucontrol
       reaper
       streamlink
@@ -38,6 +39,7 @@ in {
       vlc
       vscode
       wireshark
+      xclip
       xorg.xev
       xorg.xkill
       yt-dlp
