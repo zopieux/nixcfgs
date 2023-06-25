@@ -12,7 +12,8 @@ let
       hash = icon.hash;
     }).outPath;
   };
-in {
+in
+{
   xdg.desktopEntries = {
     chrome-glowing-bear =
       webApp "Glowing Bear" "IRC client" "https://irc.home.zopi.eu/" {
@@ -34,13 +35,15 @@ in {
       };
 
     chrome-youtube-music = webApp "Youtube Music" "Online music player"
-      "https://music.youtube.com/" {
+      "https://music.youtube.com/"
+      {
         url = "https://music.youtube.com/img/favicon_144.png";
         hash = "sha256-xuHQU1LBXb8ATf7uZ+Jz/xnASyzWlMkBfJgn6NjZz1Y=";
       };
 
     chrome-syncthing = webApp "Syncthing" "File synchronization daemon"
-      "http://127.0.0.1:8384/" {
+      "http://127.0.0.1:8384/"
+      {
         url =
           "https://raw.githubusercontent.com/syncthing/syncthing/main/assets/logo-128.png";
         hash = "sha256-X4e1oiCEWGdOLqxX4WsU2yPnX7sjU08OvEhzfDXAr1k=";
@@ -50,7 +53,7 @@ in {
       name = "Alt";
       exec = ''${browser} --profile-directory="Profile 1"'';
       terminal = false;
-      categories = ["WebBrowser" ];
+      categories = [ "WebBrowser" ];
     };
 
     streamlink = {
@@ -60,9 +63,9 @@ in {
       ''}";
     };
 
-    stable-diffusion-webui ={
+    stable-diffusion-webui = {
       name = "Stable Diffusion Webui";
-      exec =  "${pkgs.writeShellScript "sdwui-launch" ''
+      exec = "${pkgs.writeShellScript "sdwui-launch" ''
         ${pkgs.coreutils}/bin/nohup /home/alex/dev/ml/stable-diffusion-webui/run &>/tmp/sdwebui.log &
         while ! ${pkgs.curl}/bin/curl -o /dev/null --silent -m 1 --connect-timeout 1 http://127.0.0.1:7860/ ; do sleep 1; done
         ${pkgs.coreutils}/bin/nohup ${browser} --profile-directory="Profile 1" http://127.0.0.1:7860/ &>/dev/null &
@@ -73,6 +76,17 @@ in {
         url = "https://avatars.githubusercontent.com/u/51063788?s=200&v=4&name=.png";
         hash = "sha256-B6KDmackWhj03irz1c+go0o6J/hCL1r0kXdwZle/dNE=";
       }).outPath;
+    };
+
+    stable-diffusion-comfy-ui = {
+      name = "Stable Diffusion ComfyUI";
+      exec = "${pkgs.writeShellScript "comfyui-launch" ''
+        ${pkgs.coreutils}/bin/nohup /home/alex/dev/ml/ComfyUI/run &>/tmp/comfyui.log &
+        while ! ${pkgs.curl}/bin/curl -o /dev/null --silent -m 1 --connect-timeout 1 http://127.0.0.1:8188/ ; do sleep 1; done
+        ${pkgs.coreutils}/bin/nohup ${browser} --profile-directory="Profile 1" http://127.0.0.1:8188/ &>/dev/null &
+      ''}";
+      terminal = false;
+      categories = [ "WebBrowser" ];
     };
   };
 }
