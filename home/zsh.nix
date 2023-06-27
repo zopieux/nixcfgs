@@ -19,6 +19,12 @@
 
         # Disable stupid ^S and ^Q freeze
         stty -ixon
+
+        # Completion that makes sense: case insensitive, anywhere.
+        zstyle ':completion:*' completer _complete
+        zstyle ':completion:*' matcher-list "" 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+        autoload -Uz compinit
+        compinit
       '';
     };
   };
